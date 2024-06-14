@@ -6,6 +6,16 @@
 
 GuitarPro-to-Midi is a cross-platform command line application for converting GuitarPro files to MIDI files.
 
+# ImmerRock
+
+ImmerRock is a XR application to play Guitar. This repo Modifies GuitarPro-To-Midi to parse the tabs into a format ImmerRock can understand.
+
+MOST STABLE WITH GP5
+
+KNOWN ISSUES
+- Harmonics are not supported, remove them from your tabs before exporting.
+- 
+
 ## Features
 
 - Reading GuitarPro 3 - 5 Files (based on the open python pyGuitarPro project)
