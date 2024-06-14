@@ -12,8 +12,14 @@ ImmerRock is a XR application to play Guitar. This repo Modifies GuitarPro-To-Mi
 
 MOST STABLE WITH GP5
 
-KNOWN ISSUES
+# KNOWN ISSUES
 - Harmonics are not supported, remove them from your tabs before exporting.
+
+# Building a Release Version
+To publish a new Exe File use
+dotnet publish -c Release -r win-x64 --output E:\MiscProjects\GuitarProToMidi-ImmerRock-Release\Release
+
+Change the folder output to your choice
 
 ## Features
 
