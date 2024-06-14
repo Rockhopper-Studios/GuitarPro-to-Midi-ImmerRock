@@ -39,9 +39,15 @@ public class Format
     {
         var mid = new MidiExport();
         mid.midiTracks.Add(GetMidiHeader()); //First, untitled track
-        foreach (var track in _tracks)
+        //foreach (var track in _tracks)
+        //{
+        //    mid.midiTracks.Add(track.GetMidi());
+        //}
+
+        var GuitarGodsLeadGuitarTrack = 0;
+        if (GuitarGodsLeadGuitarTrack < _tracks.Count)
         {
-            mid.midiTracks.Add(track.GetMidi());
+            mid.midiTracks.Add(_tracks[GuitarGodsLeadGuitarTrack].GetMidi());
         }
 
         return mid;
@@ -65,10 +71,10 @@ public class Format
         midiHeader.messages.Add(new MidiMessage("text", new[] { _album }, 0));
         midiHeader.messages.Add(new MidiMessage("text", new[] { _words }, 0));
         midiHeader.messages.Add(new MidiMessage("text", new[] { _music }, 0));
-        midiHeader.messages.Add(new MidiMessage("copyright", new[] { "Copyright 2017 by Gitaro" },
+        midiHeader.messages.Add(new MidiMessage("copyright", new[] { "Conversion by GuitarProToMidi-ImmerRock" },
             0));
         midiHeader.messages.Add(new MidiMessage("marker",
-            new[] { _title + " / " + _artist + " - Copyright 2017 by Gitaro" }, 0));
+            new[] { _title + " / " + _artist + " - Conversion by GuitarProToMidi-ImmerRock" }, 0));
         midiHeader.messages.Add(new MidiMessage("midi_port", new[] { "0" }, 0));
 
         //Get tempos from List tempos, get key_signature and time_signature from barMaster

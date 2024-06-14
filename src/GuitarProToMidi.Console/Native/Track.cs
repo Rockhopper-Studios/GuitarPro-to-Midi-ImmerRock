@@ -257,6 +257,8 @@ public class Track
             }
 
             var noteChannel = Channel;
+            noteChannel = (n.Str - 1); //We are gonna change the channel absed on string info. E A D G B e => 1 2 3 4 5 6
+            noteChannel = 7 - noteChannel - 2;
 
             if (n.BendPoints.Count > 0) //Has Bending
             {
@@ -265,6 +267,7 @@ public class Track
                 {
                     usedChannel = Channel;
                 }
+                usedChannel = noteChannel;
 
                 Format.AvailableChannels[usedChannel] = false;
                 channelConnections.Add(new[] { Channel, usedChannel, n.Index + n.Duration });
@@ -279,6 +282,7 @@ public class Track
             if (n.IsVibrato && n.BendPoints.Count == 0) //Is Vibrato & No Bending
             {
                 var usedChannel = Channel;
+                usedChannel = noteChannel;
                 activeBendingPlans.Add(BendingPlan.create(n.BendPoints, Channel, usedChannel, n.Duration, n.Index,
                     n.ResizeValue, true));
             }
@@ -288,11 +292,13 @@ public class Track
                 _volumeChanges = CreateVolumeChanges(n.Index, n.Duration, n.Velocity, n.Fading);
             }
 
+            //Set Channel based on Note.Str
             midiTrack.messages.Add(new MidiMessage("note_on",
                 new[] { "" + noteChannel, "" + note, "" + n.Velocity }, n.Index - currentIndex));
+                //new[] { "" + n.Str, "" + note, "" + n.Velocity }, n.Index - currentIndex));
             currentIndex = n.Index;
 
-            if (n.BendPoints.Count > 0) //Has Bending cont.
+            if (n.BendPoints.Count > 0) //Has Bending cont. 
             {
                 midiTrack.messages.Add(new MidiMessage("control_change",
                     new[] { "" + noteChannel, "101", "0" }, 0));

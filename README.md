@@ -14,7 +14,6 @@ MOST STABLE WITH GP5
 
 KNOWN ISSUES
 - Harmonics are not supported, remove them from your tabs before exporting.
-- 
 
 ## Features
 

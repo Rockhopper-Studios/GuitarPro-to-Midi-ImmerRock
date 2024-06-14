@@ -1257,6 +1257,11 @@ public class GP5File : GPFile
         }
         track.port = GPBase.readInt()[0];
         track.channel = readChannel(channels);
+
+        //Test To change Channel based on String Of note.
+        //First, Send Everything to Channel 1
+        //track.channel = 15;
+
         if (track.channel.channel == 9)
         {
             track.isPercussionTrack = true;
