@@ -250,7 +250,9 @@ public class Track
                 note = Capo + n.Fret;
             }
 
-            if (n.Harmonic != HarmonicType.None) //Has Harmonics
+            //Ignore Harmonics
+            //if (n.Harmonic != HarmonicType.None) //Has Harmonics
+            if (false) //Has Harmonics
             {
                 var harmonicNote = GetHarmonic(Tuning[n.Str - 1], n.Fret, Capo, n.HarmonicFret, n.Harmonic);
                 note = harmonicNote;
