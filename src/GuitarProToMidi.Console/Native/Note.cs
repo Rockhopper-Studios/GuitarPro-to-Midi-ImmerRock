@@ -21,6 +21,10 @@ public class Note
     public bool IsTremBarVibrato { get; init; }
     public bool IsVibrato { get; set; }
 
+    public bool IsDeadNote { get; set; }
+    public bool IsStrokeUp { get; set; }
+    public bool IsStrokeDown { get; set; }
+
     public float
         ResizeValue
     { get; set; } =
@@ -69,6 +73,9 @@ public class Note
 
     public Note()
     {
+        IsDeadNote = false;
+        IsStrokeUp = false;
+        IsStrokeDown = false;
     }
 
     public void AddBendPoints(IEnumerable<BendPoint> bendPoints) => BendPoints.AddRange(bendPoints);

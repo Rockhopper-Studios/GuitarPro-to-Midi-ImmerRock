@@ -250,7 +250,7 @@ public class Track
                 note = Capo + n.Fret;
             }
 
-            //Ignore Harmonics
+            //Ignore Original Harmonics, ImmerRock harmonic handle later
             //if (n.Harmonic != HarmonicType.None) //Has Harmonics
             if (false) //Has Harmonics
             {
@@ -313,13 +313,68 @@ public class Track
                     new[] { "" + noteChannel, "38", "0" }, 0));
             }
 
+            int StringVelocity = noteChannel * 5 + 1;
+
             if(n.IsPalmMuted)
             {
                 //Mod Notes in Channel 15 (Count 0 - 15), Palm Mute is NoteNumebr 12, Storing String Information in Velocity
                 midiTrack.messages.Add(new MidiMessage("note_on",
-                    new[] { "" + 15, "" + 12, "" + (noteChannel * 10 + 1) }, 0));
+                    new[] { "" + 15, "" + 12, "" + StringVelocity }, 0));
                 midiTrack.messages.Add(new MidiMessage("note_off",
                    new[] { "" + 15, "" + 12, "" + 0 }, 0));
+            }
+
+            if(n.IsDeadNote)
+            {
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + 13, "" + StringVelocity }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                   new[] { "" + 15, "" + 13, "" + 0 }, 0));
+
+            }
+
+            if (n.Harmonic != HarmonicType.None)
+            {
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + 14, "" + StringVelocity }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                   new[] { "" + 15, "" + 14, "" + 0 }, 0));
+
+            }
+
+            if (n.IsHammer)
+            {
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + 15, "" + StringVelocity }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                   new[] { "" + 15, "" + 15, "" + 0 }, 0));
+
+            }
+
+            if (n.IsRhTapped)
+            {
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + 17, "" + StringVelocity }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                   new[] { "" + 15, "" + 17, "" + 0 }, 0));
+
+            }
+            if (n.IsStrokeUp)
+            {
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + 18, "" + StringVelocity }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                   new[] { "" + 15, "" + 18, "" + 0 }, 0));
+
+            }
+
+            if (n.IsStrokeDown)
+            {
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + 19, "" + StringVelocity }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                   new[] { "" + 15, "" + 19, "" + 0 }, 0));
+
             }
 
 

@@ -669,6 +669,8 @@ public class Format
                             note.Velocity = (int)(note.Velocity * 0.9f);
                             note.Duration /= 6;
                             note.ResizeValue *= (float)note.Duration / orig;
+                            
+                            note.IsDeadNote = true;
                         }
 
                         //Palm Mute
@@ -679,13 +681,25 @@ public class Format
                             note.Duration /= 2;
                             note.ResizeValue *= (float)note.Duration / orig;
 
-                            var ModNotePalmMute = new Note();
-                            ModNotePalmMute.Velocity = note.Velocity;
-                            ModNotePalmMute.Duration = note.Duration;
+                            //var ModNotePalmMute = new Note();
+                            //ModNotePalmMute.Velocity = note.Velocity;
+                            //ModNotePalmMute.Duration = note.Duration;
+
                             note.IsPalmMuted = true;
 
                         }
 
+                        //if (n.beat.effect.stroke.direction == BeatStrokeDirection.up)
+                        //{
+                        //    note.IsStrokeUp = true;
+                        //}
+
+                        //if (n.beat.effect.stroke.direction == BeatStrokeDirection.down)
+                        //{
+                        //    note.IsStrokeUp = false;
+                        //   note.IsStrokeDown = true;
+                        //}
+                        
                         //Ghost Notes
                         if (n.effect.ghostNote)
                         {
