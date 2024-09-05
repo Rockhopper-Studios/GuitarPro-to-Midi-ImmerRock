@@ -298,6 +298,7 @@ public class Track
             midiTrack.messages.Add(new MidiMessage("note_on",
                 new[] { "" + noteChannel, "" + note, "" + n.Velocity }, n.Index - currentIndex));
                 //new[] { "" + n.Str, "" + note, "" + n.Velocity }, n.Index - currentIndex));
+
             currentIndex = n.Index;
 
             if (n.BendPoints.Count > 0) //Has Bending cont. 
@@ -311,6 +312,16 @@ public class Track
                 midiTrack.messages.Add(new MidiMessage("control_change",
                     new[] { "" + noteChannel, "38", "0" }, 0));
             }
+
+            if(n.IsPalmMuted)
+            {
+                //Mod Notes in Channel 15 (Count 0 - 15), Palm Mute is NoteNumebr 12, Storing String Information in Velocity
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + 12, "" + (noteChannel * 10 + 1) }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                   new[] { "" + 15, "" + 12, "" + 0 }, 0));
+            }
+
 
             noteOffs.Add(new[] { n.Index + n.Duration, note, noteChannel });
         }

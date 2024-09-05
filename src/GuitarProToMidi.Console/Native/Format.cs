@@ -671,15 +671,22 @@ public class Format
                             note.ResizeValue *= (float)note.Duration / orig;
                         }
 
-                        //Ghost Notes
+                        //Palm Mute
                         if (n.effect.palmMute)
                         {
                             var orig = note.Duration;
                             note.Velocity = (int)(note.Velocity * 0.7f);
                             note.Duration /= 2;
                             note.ResizeValue *= (float)note.Duration / orig;
+
+                            var ModNotePalmMute = new Note();
+                            ModNotePalmMute.Velocity = note.Velocity;
+                            ModNotePalmMute.Duration = note.Duration;
+                            note.IsPalmMuted = true;
+
                         }
 
+                        //Ghost Notes
                         if (n.effect.ghostNote)
                         {
                             note.Velocity = (int)(note.Velocity * 0.8f);
