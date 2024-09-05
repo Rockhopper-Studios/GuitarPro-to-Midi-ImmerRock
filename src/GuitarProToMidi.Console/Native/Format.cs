@@ -694,11 +694,16 @@ public class Format
                         //    note.IsStrokeUp = true;
                         //}
 
-                        //if (n.beat.effect.stroke.direction == BeatStrokeDirection.down)
-                        //{
-                        //    note.IsStrokeUp = false;
-                        //   note.IsStrokeDown = true;
-                        //}
+                        if (n.beat.effect.pickStroke == BeatStrokeDirection.up)
+                        {
+                            note.IsStrokeUp = true;
+                        }
+
+                        if (n.beat.effect.pickStroke == BeatStrokeDirection.down)
+                        {
+                            note.IsStrokeUp = false;
+                            note.IsStrokeDown = true;
+                        }
                         
                         //Ghost Notes
                         if (n.effect.ghostNote)

@@ -362,18 +362,18 @@ public class Track
             if (n.IsStrokeUp)
             {
                 midiTrack.messages.Add(new MidiMessage("note_on",
-                    new[] { "" + 15, "" + 18, "" + StringVelocity }, 0));
+                    new[] { "" + 15, "" + 19, "" + StringVelocity }, 0));
                 midiTrack.messages.Add(new MidiMessage("note_off",
-                   new[] { "" + 15, "" + 18, "" + 0 }, 0));
+                   new[] { "" + 15, "" + 19, "" + 0 }, 0));
 
             }
 
             if (n.IsStrokeDown)
             {
                 midiTrack.messages.Add(new MidiMessage("note_on",
-                    new[] { "" + 15, "" + 19, "" + StringVelocity }, 0));
+                    new[] { "" + 15, "" + 18, "" + StringVelocity }, 0));
                 midiTrack.messages.Add(new MidiMessage("note_off",
-                   new[] { "" + 15, "" + 19, "" + 0 }, 0));
+                   new[] { "" + 15, "" + 18, "" + 0 }, 0));
 
             }
 
