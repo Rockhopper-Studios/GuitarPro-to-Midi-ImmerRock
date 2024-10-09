@@ -24,6 +24,7 @@ public class Note
     public bool IsDeadNote { get; set; }
     public bool IsStrokeUp { get; set; }
     public bool IsStrokeDown { get; set; }
+    public bool IsSlide {get; set;}
 
     public float
         ResizeValue
@@ -69,6 +70,7 @@ public class Note
         Fading = old.Fading;
         IsRhTapped = old.IsRhTapped;
         ResizeValue = old.ResizeValue;
+        IsSlide = old.IsSlide;
     }
 
     public Note()
@@ -76,6 +78,7 @@ public class Note
         IsDeadNote = false;
         IsStrokeUp = false;
         IsStrokeDown = false;
+        IsSlide = false;
     }
 
     public void AddBendPoints(IEnumerable<BendPoint> bendPoints) => BendPoints.AddRange(bendPoints);

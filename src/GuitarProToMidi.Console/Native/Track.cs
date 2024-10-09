@@ -342,7 +342,7 @@ public class Track
 
             }
 
-            if (n.IsHammer)
+            if (n.IsHammer && !n.IsRhTapped)
             {
                 midiTrack.messages.Add(new MidiMessage("note_on",
                     new[] { "" + 15, "" + 15, "" + StringVelocity }, 0));
@@ -374,6 +374,15 @@ public class Track
                     new[] { "" + 15, "" + 18, "" + StringVelocity }, 0));
                 midiTrack.messages.Add(new MidiMessage("note_off",
                    new[] { "" + 15, "" + 18, "" + 0 }, 0));
+
+            }
+
+            if (n.IsSlide)
+            {
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + 20, "" + StringVelocity }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                   new[] { "" + 15, "" + 20, "" + 0 }, 0));
 
             }
 

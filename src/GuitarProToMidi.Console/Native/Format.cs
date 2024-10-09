@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace GuitarProToMidi.Native;
 
@@ -709,6 +710,12 @@ public class Format
                         if (n.effect.ghostNote)
                         {
                             note.Velocity = (int)(note.Velocity * 0.8f);
+                        }
+                            
+                        note.IsSlide = false;
+                        if (n.effect.slides.Count > 0 )
+                        {
+                            note.IsSlide = true;
                         }
 
 
