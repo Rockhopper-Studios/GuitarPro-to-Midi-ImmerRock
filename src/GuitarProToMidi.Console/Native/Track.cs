@@ -342,7 +342,8 @@ public class Track
 
             }
 
-            if (n.IsHammer && !n.IsRhTapped)
+            //if (n.IsHammer && !n.IsRhTapped)
+            if (n.IsHammer)
             {
                 midiTrack.messages.Add(new MidiMessage("note_on",
                     new[] { "" + 15, "" + 15, "" + StringVelocity }, 0));
