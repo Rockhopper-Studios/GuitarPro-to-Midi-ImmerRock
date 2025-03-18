@@ -383,8 +383,30 @@ public class Track
                 midiTrack.messages.Add(new MidiMessage("note_on",
                     new[] { "" + 15, "" + 20, "" + StringVelocity }, 0));
                 midiTrack.messages.Add(new MidiMessage("note_off",
-                   new[] { "" + 15, "" + 20, "" + 0 }, 0));
+                    new[] { "" + 15, "" + 20, "" + 0 }, 0));
 
+            }
+
+            int FingerChannel = 0;
+        
+            //if (n.LeftFingering > -1 ) // thump = 0, index = 1, middle = 2, annular = 3, little = 4
+            if(false)
+            {
+                FingerChannel = 21 + n.LeftFingering -21 + 100;
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + FingerChannel, "" + StringVelocity }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                    new[] { "" + 15, "" + FingerChannel, "" + 0 }, 0));
+            }
+            
+            //if (n.RightFingering > -1 ) // thump = 0, index = 1, middle = 2, annular = 3, little = 4
+            if(false)
+            {
+                FingerChannel = 26 + n.RightFingering -26 + 100;
+                midiTrack.messages.Add(new MidiMessage("note_on",
+                    new[] { "" + 15, "" + FingerChannel, "" + StringVelocity }, 0));
+                midiTrack.messages.Add(new MidiMessage("note_off",
+                    new[] { "" + 15, "" + FingerChannel, "" + 0 }, 0));
             }
 
 

@@ -37,6 +37,10 @@ public class Note
     public bool SlideOutUpwards { get; set; }
     public bool SlidesToNext { get; set; }
 
+    public int LeftFingering { get; set; } = -2;
+
+    public int RightFingering { get; set; } = -2;
+
     //Values from Note
     public int Str { get; set; }
 
@@ -71,6 +75,8 @@ public class Note
         IsRhTapped = old.IsRhTapped;
         ResizeValue = old.ResizeValue;
         IsSlide = old.IsSlide;
+        LeftFingering = old.LeftFingering;
+        RightFingering = old.RightFingering;
     }
 
     public Note()
@@ -79,6 +85,8 @@ public class Note
         IsStrokeUp = false;
         IsStrokeDown = false;
         IsSlide = false;
+        LeftFingering = -2;
+        RightFingering = -2;
     }
 
     public void AddBendPoints(IEnumerable<BendPoint> bendPoints) => BendPoints.AddRange(bendPoints);

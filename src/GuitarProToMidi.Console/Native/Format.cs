@@ -729,13 +729,16 @@ public class Format
 
                         if (n.effect.accentuatedNote)
                         {
-                            note.Velocity = (int)(note.Velocity * 1.2f);
+                            note.Velocity = Math.Min((int)(note.Velocity * 1.2f), 127);
                         }
 
                         if (n.effect.heavyAccentuatedNote)
                         {
-                            note.Velocity = (int)(note.Velocity * 1.4f);
+                            note.Velocity = Math.Min((int)(note.Velocity * 1.4f), 127);
                         }
+
+                        note.LeftFingering = (int)n.effect.leftHandFinger;
+                        note.RightFingering = (int)n.effect.rightHandFinger;
 
                         //Arpeggio / Brush
                         if (hasBrush)
