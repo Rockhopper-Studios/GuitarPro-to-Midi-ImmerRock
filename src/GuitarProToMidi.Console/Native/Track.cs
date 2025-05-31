@@ -260,7 +260,8 @@ public class Track
 
             var noteChannel = Channel;
             noteChannel = (n.Str - 1); //We are gonna change the channel absed on string info. E A D G B e => 1 2 3 4 5 6
-            noteChannel = 7 - noteChannel - 2;
+            noteChannel = Tuning.Length - noteChannel - 1;
+
 
             if (n.BendPoints.Count > 0) //Has Bending
             {
